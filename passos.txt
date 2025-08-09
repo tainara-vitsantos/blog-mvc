@@ -11,4 +11,3 @@ dotnet new mvc -o BlogTainara
 
  cd .\BlogTainara
 dotnet watch run
-
