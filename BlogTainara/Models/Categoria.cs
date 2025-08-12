@@ -9,4 +9,14 @@ namespace BlogTainara.Models;
      [Required]
      [StringLength(30)]
      public string Nome { get; set; }   
+
+     public Categoria (){
+
+     }
+
+     public Categoria (int id, string nome){
+        Id = id;
+        Nome = nome;
+        // não pode ter outro id e string, não pode ser igual.
+     }
     }
