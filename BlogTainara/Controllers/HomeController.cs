@@ -16,7 +16,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        
+
         //Criar objetos
         Categoria tecnologia = new()
         {
@@ -24,14 +24,18 @@ public class HomeController : Controller
             Nome = "Tecnologia"
         };
 
-        
+
         // Outro modo de manipular um objeto
         Categoria ia = new();
         ia.Id = 2;
-        ia.Nome = "IA"; 
+        ia.Nome = "IA";
 
-        Categoria eletronico = new(3, "Eletrônicos"); 
-        
+        Categoria eletronico = new(3, "Eletrônicos");
+
+        Categoria front = new(4, "frontend");
+            Categoria seguranca = new(4, "dados");
+                Categoria cloud= new(4, "nuvem");
+
 
         List<Postagem> postagens = new List<Postagem>
 {
@@ -44,8 +48,8 @@ public class HomeController : Controller
         DataPostagem = DateTime.Now,
         Descricao = "A tecnologia está evoluindo mais rápido do que a capacidade humana.",
         Texto = "A arte desafia a tecnologia e a tecnologia inspira a arte.",
-        Thumbnail = "~/img/tec.jpg",
-        Foto = "~/img/tec.jpg"
+        Thumbnail = "/img/tec.jpg",
+        Foto = "/img/tec.jpg"
     },
     new Postagem
     {
@@ -56,8 +60,9 @@ public class HomeController : Controller
         DataPostagem = DateTime.Now,
         Descricao = "A IA é o novo ouro. Quem souber usar, liderará o mercado.",
         Texto = "A IA sem controle pode se tornar a pior invenção da civilização humana.",
-        Thumbnail = "~/img/ia.jpg",
-        Foto = "~/img/ia.jpg"
+        Thumbnail = "/img/ia.jpg",
+        Foto = "/img/ia.jpg"
+
     },
     new Postagem
     {
@@ -68,16 +73,60 @@ public class HomeController : Controller
         DataPostagem = DateTime.Now,
         Descricao = "Computador: onde a esperança encontra a frustração.",
         Texto = "O hardware é o corpo, o software a alma.",
-        Thumbnail = "img/"
-        Foto = "~/img/hardware.jpg"
-    }
+        Thumbnail = "/img/hardware.jpg",
+        Foto = "/img/hardware.jpg"
+    },
+    new Postagem
+    {
+    Id = 4,
+    Nome = "Front-end: a interface que conecta usuário e ideia.",
+    CategoriaId = 4,
+    Categoria = front,
+    DataPostagem = DateTime.Now,
+    Descricao = "HTML, CSS e JavaScript trabalhando juntos para transformar design em experiência.",
+    Texto = "O front-end é a camada visível do software: onde usabilidade, acessibilidade e performance se encontram para encantar o usuário.",
+    Thumbnail = "/img/front.jpg",
+    Foto = "/img/front.jpg"
+
+    },
+
+     new Postagem
+    {
+        Id = 5,
+        Nome = "Segurança digital: o escudo invisível da web.",
+        CategoriaId = 5,
+        Categoria = seguranca,
+        DataPostagem = DateTime.Now,
+        Descricao = "A informação é o novo petróleo — proteja-a.",
+        Texto = "Um sistema seguro é construído antes do ataque, não depois.",
+        Thumbnail = "/img/security.jpg",
+        Foto = "/img/security.jpg"
+    },
+    new Postagem
+    {
+        Id = 6,
+        Nome = "Cloud computing: o céu não é o limite.",
+        CategoriaId = 6,
+        Categoria = cloud,
+        DataPostagem = DateTime.Now,
+        Descricao = "Serviços escaláveis e acessíveis de qualquer lugar.",
+        Texto = "A nuvem é mais do que armazenamento: é flexibilidade e poder de processamento.",
+        Thumbnail = "/img/cloud.jpg",
+        Foto = "/img/cloud.jpg"
+    },
 };
+
+
 
 
 
         return View(postagens);
     }
 
+    public IActionResult Postagem()
+    {
+        return View();
+    }
     public IActionResult Privacy()
     {
         return View();

@@ -5,15 +5,35 @@
 
 <div class="text-center">
     <h1 class="display-4">
-       @ViewData["Mensagem"] 
+        @ViewData["Mensagem"]
         Blog da Tainara
-        </h1>
+    </h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-
-@foreach (Postagem postagem in Model)  {
-    <p> @postagem.Nome</p>
-    <img src="/img/tec.jpg">
-    <p> @postagem.Foto</p>
-}
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 g-3">
+        @foreach (Postagem postagem in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="@postagem.Thumbnail" class="img-fluid rounded-start h-100" alt="@postagem.Nome"> 
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">@postagem.Nome</h5>
+                                <p class="card-text">@postagem.Texto</p>
+                                <p class="card-text"><small class="text-body-secondary">
+                                        @postagem.DataPostagem.ToString("dd/MM/yyyy")
+                                    </small></p>
+                                    <a asp-action="Postagem"> Learn Mais</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
