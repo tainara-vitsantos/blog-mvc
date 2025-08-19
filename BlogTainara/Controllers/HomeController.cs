@@ -9,6 +9,7 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly List<Postagem> postagens;
+    private List<Categoria> categorias;
 
     public HomeController(ILogger<HomeController> logger)
     {
@@ -111,6 +112,8 @@ public class HomeController : Controller
         var postagem = postagens.FirstOrDefault(p => p.Id == id);
         if (postagem == null)
         return NotFound();
+
+        ViewData["Categorias"] = categorias;
 
         return View(postagem);
     }
