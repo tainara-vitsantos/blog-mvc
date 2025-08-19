@@ -1,5 +1,10 @@
+@model BlogTainara.Models.Postagem
+
 @{
-    ViewData["Title"]= "Postagem";
+    ViewData["Title"] = "Postagem";
 }
 
-<h1> Postagem</h1>
+<h1>@Model.Nome</h1>
+<p>@Model.Descricao</p>
+<p>@Model.Texto</p>
+<img src="@Model.Foto" alt="@Model.Nome" />

@@ -3,32 +3,35 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">
+<div class="p-5 mb-4 bg-secondary  rounded text-white text-center">
+    <h1 class="display-3 fw-bold">
         @ViewData["Mensagem"]
         Blog da Tainara
     </h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p class="fs-4">Explorando o futuro, uma tecnologia de cada vez</p>
 </div>
 
-<div class="container">
+<div class="container pb-5">
     <div class="row row-cols-1 row-cols-sm-2 g-3">
         @foreach (Postagem postagem in Model)
         {
             <div class="col">
                 <div class="card h-100">
-                    <div class="row g-0">
+                    <div class="row h-100 g-0">
                         <div class="col-md-4">
-                            <img src="@postagem.Thumbnail" class="img-fluid rounded-start h-100" alt="@postagem.Nome"> 
+                            <img src="@postagem.Thumbnail" class="img-fluid rounded-start h-100 object-fit-cover" alt="@postagem.Nome"> 
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
+                                <button class="btn btn-sm btn-dark mb-2">
+                                    @postagem.Categoria.Nome
+                                </button>
                                 <h5 class="card-title">@postagem.Nome</h5>
                                 <p class="card-text">@postagem.Texto</p>
-                                <p class="card-text"><small class="text-body-secondary">
+                                <p class="card-text d-flex justify-content-between"><small class="text-body-secondary">
                                         @postagem.DataPostagem.ToString("dd/MM/yyyy")
-                                    </small></p>
-                                    <a asp-action="Postagem"> Learn Mais</a>
+                                    </small> <a asp-action="Postagem" asp-route-id="@postagem.Id"> Ler Mais</a></p>
+                                    
                             </div>
                         </div>
                     </div>
